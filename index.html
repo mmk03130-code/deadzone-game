@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEADZONE — Zombie Survival</title>
+  <script type="module" crossorigin src="./index-CY-mL28A.js"></script>
+  <link rel="stylesheet" crossorigin href="./index-BYkHX5WF.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<!-- ============ LOBBY ============ -->
+<div id="lobby" class="screen">
+  <div class="lobby-top">
+    <div class="logo">
+      <div class="logo-title">DEAD<span>ZONE</span></div>
+      <div class="logo-sub">ZOMBIE SURVIVAL &nbsp;//&nbsp; SECTOR 7 &nbsp;//&nbsp; NIGHT OPS</div>
+    </div>
+    <div class="lobby-status">
+      <div class="status-line"><span class="dot"></span> SERVER: SECTOR-7 // ONLINE</div>
+      <div class="status-line dim">BUILD v0.1 &nbsp;|&nbsp; WAVE SURVIVAL</div>
+    </div>
+  </div>
+
+  <div class="lobby-main">
+    <nav class="menu">
+      <button class="menu-item active" data-panel="play">PLAY</button>
+      <button class="menu-item" data-panel="missions">MISSIONS</button>
+      <button class="menu-item" data-panel="weapons">WEAPONS</button>
+      <button class="menu-item" data-panel="characters">CHARACTERS</button>
+      <button class="menu-item" data-panel="settings">SETTINGS</button>
+    </nav>
+
+    <div class="panel-wrap">
+      <!-- PLAY -->
+      <section class="panel active" id="panel-play">
+        <div class="panel-head">WAVE SURVIVAL</div>
+        <div class="panel-body">
+          <p class="panel-text">Hold the yard against the horde. Waves get bigger, faster, meaner. How many nights can you survive?</p>
+          <div class="mission-brief">
+            <div><span>MAP</span><b>SECTOR 7 YARD</b></div>
+            <div><span>MODE</span><b>WAVE SURVIVAL</b></div>
+            <div><span>ENEMIES</span><b>INFECTED HORDE</b></div>
+            <div><span>BEST</span><b id="best-score">—</b></div>
+          </div>
+          <button id="btn-start" class="btn-start">▶ &nbsp;DEPLOY</button>
+          <div class="controls-hint">WASD MOVE &nbsp;·&nbsp; MOUSE AIM &nbsp;·&nbsp; CLICK FIRE &nbsp;·&nbsp; R RELOAD &nbsp;·&nbsp; SHIFT SPRINT</div>
+        </div>
+      </section>
+
+      <!-- MISSIONS -->
+      <section class="panel" id="panel-missions">
+        <div class="panel-head">MISSIONS</div>
+        <div class="panel-body">
+          <div class="mission-row open" data-mission="1">
+            <div class="mission-num">01</div>
+            <div class="mission-info"><b>FIRST NIGHT</b><span>Survive 5 waves in the Sector 7 yard.</span></div>
+            <div class="mission-tag">OPEN</div>
+          </div>
+          <div class="mission-row locked"><div class="mission-num">02</div><div class="mission-info"><b>DEAD FREIGHT</b><span>Hold the convoy yard. Coming soon.</span></div><div class="mission-tag">LOCKED</div></div>
+          <div class="mission-row locked"><div class="mission-num">03</div><div class="mission-info"><b>BLACKOUT</b><span>Night raid, no floodlights. Coming soon.</span></div><div class="mission-tag">LOCKED</div></div>
+          <div class="mission-row locked"><div class="mission-num">04</div><div class="mission-info"><b>THE NEST</b><span>Clear the infected warehouse. Coming soon.</span></div><div class="mission-tag">LOCKED</div></div>
+        </div>
+      </section>
+
+      <!-- WEAPONS -->
+      <section class="panel" id="panel-weapons">
+        <div class="panel-head">WEAPONS</div>
+        <div class="panel-body">
+          <div class="weapon-row selected">
+            <div class="weapon-name">M4A1 <span class="wtag">ASSAULT RIFLE</span></div>
+            <div class="stat"><span>DMG</span><div class="bar"><i style="width:62%"></i></div></div>
+            <div class="stat"><span>RATE</span><div class="bar"><i style="width:78%"></i></div></div>
+            <div class="stat"><span>RANGE</span><div class="bar"><i style="width:70%"></i></div></div>
+            <div class="stat"><span>MAG</span><b>30</b></div>
+            <div class="weapon-tag">EQUIPPED</div>
+          </div>
+          <div class="weapon-row locked"><div class="weapon-name">M870 <span class="wtag">SHOTGUN</span></div><div class="weapon-tag">LOCKED — SURVIVE WAVE 5</div></div>
+          <div class="weapon-row locked"><div class="weapon-name">MP5 <span class="wtag">SMG</span></div><div class="weapon-tag">LOCKED — SURVIVE WAVE 8</div></div>
+          <div class="weapon-row locked"><div class="weapon-name">M24 <span class="wtag">SNIPER</span></div><div class="weapon-tag">LOCKED — SURVIVE WAVE 12</div></div>
+        </div>
+      </section>
+
+      <!-- CHARACTERS -->
+      <section class="panel" id="panel-characters">
+        <div class="panel-head">CHARACTERS</div>
+        <div class="panel-body">
+          <div class="char-row selected">
+            <div class="char-avatar">SR</div>
+            <div class="char-info"><b>SGT. REYES</b><span>Assault // Veteran of Sector 7. Balanced speed and health.</span></div>
+            <div class="weapon-tag">SELECTED</div>
+          </div>
+          <div class="char-row locked"><div class="char-avatar">VK</div><div class="char-info"><b>LT. VOSS</b><span>Heavy // Slower, +25 health. Coming soon.</span></div><div class="weapon-tag">LOCKED</div></div>
+          <div class="char-row locked"><div class="char-avatar">KA</div><div class="char-info"><b>CPL. KANE</b><span>Scout // Faster sprint, less health. Coming soon.</span></div><div class="weapon-tag">LOCKED</div></div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="panel" id="panel-settings">
+        <div class="panel-head">SETTINGS</div>
+        <div class="panel-body">
+          <label class="setting"><span>MOUSE SENSITIVITY</span><input id="set-sens" type="range" min="0.3" max="2.5" step="0.1" value="1"><b id="sens-val">1.0</b></label>
+          <label class="setting"><span>VOLUME</span><input id="set-vol" type="range" min="0" max="100" step="5" value="70"><b id="vol-val">70</b></label>
+          <label class="setting"><span>QUALITY</span>
+            <select id="set-quality"><option value="high">HIGH</option><option value="med" selected>MEDIUM</option><option value="low">LOW</option></select>
+          </label>
+          <label class="setting check"><span>CROSSHAIR</span><input id="set-cross" type="checkbox" checked></label>
+          <div class="settings-note">Settings save on this machine.</div>
+        </div>
+      </section>
+    </div>
+
+    <aside class="showcase">
+      <div class="showcase-tag">OPERATOR</div>
+      <div class="showcase-name">SGT. REYES</div>
+      <div class="showcase-role">ASSAULT // SECTOR 7</div>
+      <div class="showcase-stats">
+        <div><span>HEALTH</span><b>100</b></div>
+        <div><span>SPEED</span><b>5.0 m/s</b></div>
+        <div><span>ARMOR</span><b>LEVEL II</b></div>
+        <div><span>PRIMARY</span><b>M4A1</b></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="lobby-foot">DEADZONE v0.1 &nbsp;·&nbsp; PLAYCANVAS &nbsp;·&nbsp; HEADSHOTS PAY DOUBLE &nbsp;·&nbsp; DO NOT LET THEM TOUCH YOU</div>
+</div>
+
+<!-- ============ HUD ============ -->
+<div id="hud" class="screen hidden">
+  <div id="crosshair"><i class="ch-t"></i><i class="ch-b"></i><i class="ch-l"></i><i class="ch-r"></i><i class="ch-dot"></i></div>
+  <div id="hitmarker">✕</div>
+  <div id="vignette"></div>
+  <div id="wave-banner"></div>
+  <div class="hud-top">
+    <div class="hud-wave">WAVE <b id="hud-wave">1</b><span id="hud-zleft"></span></div>
+    <div class="hud-score">SCORE <b id="hud-score">0</b><span>KILLS <b id="hud-kills">0</b></span></div>
+  </div>
+  <div class="hud-bottom">
+    <div class="hud-health"><span>HEALTH</span><div class="bar big"><i id="health-fill" style="width:100%"></i></div><b id="health-num">100</b></div>
+    <div class="hud-ammo"><b id="ammo-num">30</b><span>/ ∞</span><div id="reload-hint">RELOADING…</div></div>
+  </div>
+  <div id="pause-tip">ESC — RELEASE MOUSE &nbsp;·&nbsp; CLICK TO RE-ENGAGE</div>
+</div>
+
+<!-- ============ GAME OVER ============ -->
+<div id="gameover" class="screen hidden">
+  <div class="go-box">
+    <div class="go-title">K.I.A.</div>
+    <div class="go-sub">THE HORDE GOT YOU ON WAVE <b id="go-wave">1</b></div>
+    <div class="go-stats">
+      <div><span>SCORE</span><b id="go-score">0</b></div>
+      <div><span>KILLS</span><b id="go-kills">0</b></div>
+      <div><span>HEADSHOTS</span><b id="go-head">0</b></div>
+      <div><span>ACCURACY</span><b id="go-acc">0%</b></div>
+    </div>
+    <button id="btn-again" class="btn-start">↻ &nbsp;DEPLOY AGAIN</button>
+    <button id="btn-lobby" class="btn-ghost">BACK TO LOBBY</button>
+  </div>
+</div>
+
+</body>
+</html>
