@@ -4,52 +4,75 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DEADZONE — Zombie Survival</title>
-  <script type="module" crossorigin src="./index-DJM2EQsv.js"></script>
-  <link rel="stylesheet" crossorigin href="./index-D5p1fvII.css">
+  <script type="module" crossorigin src="./index-CJq3fQxy.js"></script>
+  <link rel="stylesheet" crossorigin href="./index-kPJcTYlg.css">
 </head>
 <body>
 <canvas id="game"></canvas>
 
 <!-- ============ LOBBY ============ -->
 <div id="lobby" class="screen">
-  <div class="lobby-top">
+  <div class="topbar">
     <div class="logo">
       <div class="logo-title">DEAD<span>ZONE</span></div>
       <div class="logo-sub">ZOMBIE SURVIVAL &nbsp;//&nbsp; SECTOR 7 &nbsp;//&nbsp; NIGHT OPS</div>
     </div>
-    <div class="lobby-status">
-      <div class="status-line"><span class="dot"></span> SERVER: SECTOR-7 // ONLINE</div>
-      <div class="status-line dim">BUILD v0.1 &nbsp;|&nbsp; WAVE SURVIVAL</div>
+    <div class="player-chip">
+      <div class="player-avatar">SR</div>
+      <div class="player-id"><b>SGT. REYES</b><span>LVL 12</span></div>
+      <div class="xp"><i style="width:62%"></i></div>
+      <span class="xp-text">1,250 / 2,000 XP</span>
+    </div>
+    <div class="top-icons">
+      <span class="currency">&#9679; 1,250</span>
+      <span class="currency">&#11039; 340</span>
+      <button class="icon-btn" type="button">&#9993;<i class="badge">3</i></button>
+      <button class="icon-btn" type="button">&#128101;</button>
+      <button class="icon-btn" type="button">&#9881;</button>
     </div>
   </div>
 
-  <div class="lobby-main">
-    <nav class="menu">
-      <button class="menu-item active" data-panel="play">PLAY</button>
-      <button class="menu-item" data-panel="missions">MISSIONS</button>
-      <button class="menu-item" data-panel="weapons">WEAPONS</button>
-      <button class="menu-item" data-panel="characters">CHARACTERS</button>
-      <button class="menu-item" data-panel="settings">SETTINGS</button>
-    </nav>
+  <nav class="topnav">
+    <button class="menu-item active" data-panel="play">PLAY</button>
+    <button class="menu-item" data-panel="missions">MISSIONS</button>
+    <button class="menu-item" data-panel="weapons">WEAPONS</button>
+    <button class="menu-item" data-panel="characters">CHARACTERS</button>
+    <button class="menu-item" data-panel="settings">SETTINGS</button>
+    <span class="season-tag">SEASON 1 &mdash; NIGHT OPS</span>
+  </nav>
 
+  <div class="lobby-main">
     <div class="panel-wrap">
       <!-- PLAY -->
       <section class="panel active" id="panel-play">
-        <div class="panel-head">WAVE SURVIVAL</div>
+        <div class="panel-head">SELECT MODE</div>
         <div class="panel-body">
-          <p class="panel-text">Hold the yard against the horde. Waves get bigger, faster, meaner. How many nights can you survive?</p>
-          <div class="mission-brief">
-            <div><span>MAP</span><b>SECTOR 7 YARD</b></div>
-            <div><span>MODE</span><b>WAVE SURVIVAL</b></div>
-            <div><span>ENEMIES</span><b>INFECTED HORDE</b></div>
-            <div><span>BEST</span><b id="best-score">—</b></div>
+          <div class="mode-card selected">
+            <div class="mode-title">WAVE SURVIVAL</div>
+            <div class="mode-meta">SECTOR 7 YARD &nbsp;&middot;&nbsp; INFECTED HORDE</div>
+            <div class="mode-meta dim">BEST: <b id="best-score">&mdash;</b></div>
           </div>
-          <button id="btn-start" class="btn-start">▶ &nbsp;DEPLOY</button>
-          <div class="controls-hint">WASD MOVE &nbsp;·&nbsp; MOUSE AIM &nbsp;·&nbsp; CLICK FIRE &nbsp;·&nbsp; R RELOAD &nbsp;·&nbsp; SHIFT SPRINT</div>
+          <div class="mode-card locked"><div class="mode-title">NIGHT RAID</div><div class="mode-meta">LOCKED &mdash; SURVIVE WAVE 5</div></div>
+          <div class="mode-card locked"><div class="mode-title">HORDE RUSH</div><div class="mode-meta">LOCKED &mdash; SURVIVE WAVE 10</div></div>
+          <div class="side-panel">
+            <div class="side-head">SEASON 1 &mdash; NIGHT OPS</div>
+            <div class="side-row"><span>TIER 4</span><b>1,250 / 2,000 XP</b></div>
+            <div class="bar big"><i style="width:62%"></i></div>
+          </div>
+          <div class="side-panel">
+            <div class="side-head">DAILY MISSIONS</div>
+            <div class="daily-row"><span>Kill 10 zombies</span><b>0 / 10</b></div>
+            <div class="bar"><i style="width:0%"></i></div>
+            <div class="daily-row"><span>Survive 3 waves</span><b>0 / 3</b></div>
+            <div class="bar"><i style="width:0%"></i></div>
+            <div class="daily-row"><span>Score 5 headshots</span><b>0 / 5</b></div>
+            <div class="bar"><i style="width:0%"></i></div>
+          </div>
+          <div class="controls-hint">WASD MOVE &nbsp;&middot;&nbsp; MOUSE AIM &nbsp;&middot;&nbsp; CLICK FIRE &nbsp;&middot;&nbsp; R RELOAD &nbsp;&middot;&nbsp; SHIFT SPRINT</div>
         </div>
       </section>
 
-      <!-- MISSIONS -->
+<!-- MISSIONS -->
       <section class="panel" id="panel-missions">
         <div class="panel-head">MISSIONS</div>
         <div class="panel-body">
@@ -64,7 +87,7 @@
         </div>
       </section>
 
-      <!-- WEAPONS -->
+<!-- WEAPONS -->
       <section class="panel" id="panel-weapons">
         <div class="panel-head">WEAPONS</div>
         <div class="panel-body">
@@ -82,7 +105,7 @@
         </div>
       </section>
 
-      <!-- CHARACTERS -->
+<!-- CHARACTERS -->
       <section class="panel" id="panel-characters">
         <div class="panel-head">CHARACTERS</div>
         <div class="panel-body">
@@ -96,7 +119,7 @@
         </div>
       </section>
 
-      <!-- SETTINGS -->
+<!-- SETTINGS -->
       <section class="panel" id="panel-settings">
         <div class="panel-head">SETTINGS</div>
         <div class="panel-body">
@@ -111,7 +134,9 @@
       </section>
     </div>
 
-    <aside class="showcase">
+    <div class="stage"></div>
+
+<aside class="showcase">
       <div class="showcase-tag">OPERATOR</div>
       <div class="showcase-name">SGT. REYES</div>
       <div class="showcase-role">ASSAULT // SECTOR 7</div>
@@ -121,10 +146,27 @@
         <div><span>ARMOR</span><b>LEVEL II</b></div>
         <div><span>PRIMARY</span><b>7.62 BOLT-ACTION</b></div>
       </div>
+    
+      <div class="weapon-card">
+        <div class="side-head">PRIMARY WEAPON</div>
+        <div class="weapon-name">7.62 BOLT-ACTION <span class="wtag">BOLT-ACTION RIFLE</span></div>
+        <div class="stat"><span>DMG</span><div class="bar"><i style="width:62%"></i></div></div>
+        <div class="stat"><span>RATE</span><div class="bar"><i style="width:78%"></i></div></div>
+      </div>
     </aside>
   </div>
 
-  <div class="lobby-foot">DEADZONE v0.1 &nbsp;·&nbsp; PLAYCANVAS &nbsp;·&nbsp; HEADSHOTS PAY DOUBLE &nbsp;·&nbsp; DO NOT LET THEM TOUCH YOU</div>
+  <div class="lobby-bottom">
+    <div class="squad">
+      <span class="squad-label">SQUAD &mdash; SOLO</span>
+      <div class="squad-slot filled">SR</div>
+      <div class="squad-slot">+</div>
+      <div class="squad-slot">+</div>
+      <button class="btn-invite" type="button">+ INVITE</button>
+    </div>
+    <div class="server-line"><span class="dot"></span> SERVER: SECTOR-7 // ONLINE</div>
+    <button id="btn-start" class="btn-deploy">&#9654; &nbsp;DEPLOY</button>
+  </div>
 </div>
 
 <!-- ============ HUD ============ -->
