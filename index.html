@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DEADZONE — Zombie Survival</title>
-  <script type="module" crossorigin src="./index-IpJE2aQ7.js"></script>
-  <link rel="stylesheet" crossorigin href="./index-C1DXiRnA.css">
+  <script type="module" crossorigin src="./index-C6eTNqUN.js"></script>
+  <link rel="stylesheet" crossorigin href="./index-CrF5QMLW.css">
 </head>
 <body>
 <canvas id="game"></canvas>
@@ -27,7 +27,7 @@
       <span class="currency">&#9679; 1,250</span>
       <span class="currency">&#11039; 340</span>
       <button class="icon-btn" type="button">&#9993;<i class="badge">3</i></button>
-      <button class="icon-btn" type="button">&#128101;</button>
+      <button class="icon-btn icon-friends" type="button">&#128101;</button>
       <button class="icon-btn" type="button">&#9881;</button>
     </div>
   </div>
@@ -68,7 +68,7 @@
             <div class="daily-row"><span>Score 5 headshots</span><b>0 / 5</b></div>
             <div class="bar"><i style="width:0%"></i></div>
           </div>
-          <div class="controls-hint">WASD MOVE &nbsp;&middot;&nbsp; ARROW KEYS AIM &nbsp;&middot;&nbsp; SPACE FIRE &nbsp;&middot;&nbsp; R RELOAD &nbsp;&middot;&nbsp; SHIFT SPRINT &nbsp;&middot;&nbsp; 1-4 WEAPONS &nbsp;&middot;&nbsp; Q SWAP &nbsp;&middot;&nbsp; &larr; &rarr; HERO</div>
+          <div class="controls-hint">WASD MOVE &nbsp;·&nbsp; ARROWS AIM &nbsp;·&nbsp; SPACE FIRE &nbsp;·&nbsp; R RELOAD &nbsp;·&nbsp; SHIFT SPRINT<br>1-4 WEAPONS &nbsp;·&nbsp; Q SWAP &nbsp;·&nbsp; ARROW KEYS HERO</div>
         </div>
       </section>
 
@@ -92,36 +92,52 @@
         <div class="panel-head">WEAPONS</div>
         <div class="panel-body">
           <div class="weapon-row selected" data-weapon="m4">
-            <div class="weapon-name">M4 SPECTRE <span class="wtag">ASSAULT RIFLE</span></div>
-            <div class="stat"><span>DMG</span><div class="bar"><i style="width:33%"></i></div></div>
-            <div class="stat"><span>RATE</span><div class="bar"><i style="width:64%"></i></div></div>
-            <div class="stat"><span>RANGE</span><div class="bar"><i style="width:75%"></i></div></div>
-            <div class="stat"><span>MAG</span><b>30</b></div>
-            <div class="weapon-tag">EQUIPPED</div>
+            <div class="weapon-line1">
+              <div class="weapon-name">M4 SPECTRE <span class="wtag">ASSAULT RIFLE</span></div>
+              <div class="weapon-tag">EQUIPPED</div>
+            </div>
+            <div class="weapon-line2">
+              <div class="stat"><span>DMG</span><div class="bar"><i style="width:33%"></i></div><b>34</b></div>
+              <div class="stat"><span>RATE</span><div class="bar"><i style="width:64%"></i></div><b>480</b></div>
+              <div class="stat"><span>RANGE</span><div class="bar"><i style="width:75%"></i></div><b>90</b></div>
+              <div class="stat"><span>MAG</span><b>30</b></div>
+            </div>
           </div>
           <div class="weapon-row locked" data-weapon="longshot">
-            <div class="weapon-name">LONGSHOT <span class="wtag">SNIPER</span></div>
-            <div class="stat"><span>DMG</span><div class="bar"><i style="width:100%"></i></div></div>
-            <div class="stat"><span>RATE</span><div class="bar"><i style="width:7%"></i></div></div>
-            <div class="stat"><span>RANGE</span><div class="bar"><i style="width:100%"></i></div></div>
-            <div class="stat"><span>MAG</span><b>5</b></div>
-            <div class="weapon-tag">GUN STORE — DEAD MAIN ST</div>
+            <div class="weapon-line1">
+              <div class="weapon-name">LONGSHOT <span class="wtag">SNIPER</span></div>
+              <div class="weapon-tag">GUN STORE — DEAD MAIN ST</div>
+            </div>
+            <div class="weapon-line2">
+              <div class="stat"><span>DMG</span><div class="bar"><i style="width:100%"></i></div><b>120</b></div>
+              <div class="stat"><span>RATE</span><div class="bar"><i style="width:7%"></i></div><b>50</b></div>
+              <div class="stat"><span>RANGE</span><div class="bar"><i style="width:100%"></i></div><b>120</b></div>
+              <div class="stat"><span>MAG</span><b>5</b></div>
+            </div>
           </div>
           <div class="weapon-row locked" data-weapon="breacher">
-            <div class="weapon-name">BREACHER <span class="wtag">SHOTGUN · 8 PELLETS</span></div>
-            <div class="stat"><span>DMG</span><div class="bar"><i style="width:13%"></i></div></div>
-            <div class="stat"><span>RATE</span><div class="bar"><i style="width:9%"></i></div></div>
-            <div class="stat"><span>RANGE</span><div class="bar"><i style="width:21%"></i></div></div>
-            <div class="stat"><span>MAG</span><b>6</b></div>
-            <div class="weapon-tag">AMMO DEPOT — DEAD MAIN ST</div>
+            <div class="weapon-line1">
+              <div class="weapon-name">BREACHER <span class="wtag">SHOTGUN</span></div>
+              <div class="weapon-tag">AMMO DEPOT — DEAD MAIN ST</div>
+            </div>
+            <div class="weapon-line2">
+              <div class="stat"><span>DMG</span><div class="bar"><i style="width:13%"></i></div><b>18×8</b></div>
+              <div class="stat"><span>RATE</span><div class="bar"><i style="width:9%"></i></div><b>70</b></div>
+              <div class="stat"><span>RANGE</span><div class="bar"><i style="width:21%"></i></div><b>25</b></div>
+              <div class="stat"><span>MAG</span><b>6</b></div>
+            </div>
           </div>
           <div class="weapon-row locked" data-weapon="wasp">
-            <div class="weapon-name">WASP SMG <span class="wtag">SMG</span></div>
-            <div class="stat"><span>DMG</span><div class="bar"><i style="width:18%"></i></div></div>
-            <div class="stat"><span>RATE</span><div class="bar"><i style="width:100%"></i></div></div>
-            <div class="stat"><span>RANGE</span><div class="bar"><i style="width:38%"></i></div></div>
-            <div class="stat"><span>MAG</span><b>32</b></div>
-            <div class="weapon-tag">GUN STORE — DEAD MAIN ST</div>
+            <div class="weapon-line1">
+              <div class="weapon-name">WASP SMG <span class="wtag">SMG</span></div>
+              <div class="weapon-tag">GUN STORE — DEAD MAIN ST</div>
+            </div>
+            <div class="weapon-line2">
+              <div class="stat"><span>DMG</span><div class="bar"><i style="width:18%"></i></div><b>20</b></div>
+              <div class="stat"><span>RATE</span><div class="bar"><i style="width:100%"></i></div><b>750</b></div>
+              <div class="stat"><span>RANGE</span><div class="bar"><i style="width:38%"></i></div><b>45</b></div>
+              <div class="stat"><span>MAG</span><b>32</b></div>
+            </div>
           </div>
         </div>
       </section>
@@ -198,8 +214,8 @@
       <div class="weapon-card">
         <div class="side-head">PRIMARY WEAPON</div>
         <div class="weapon-name">M4 SPECTRE <span class="wtag">ASSAULT RIFLE</span></div>
-        <div class="stat"><span>DMG</span><div class="bar"><i style="width:33%"></i></div></div>
-        <div class="stat"><span>RATE</span><div class="bar"><i style="width:64%"></i></div></div>
+        <div class="stat"><span>DMG</span><div class="bar"><i style="width:33%"></i></div><b>34</b></div>
+        <div class="stat"><span>RATE</span><div class="bar"><i style="width:64%"></i></div><b>480</b></div>
       </div>
     </aside>
   </div>
