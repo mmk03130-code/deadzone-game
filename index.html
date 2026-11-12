@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DEADZONE — Zombie Survival</title>
-  <script type="module" crossorigin src="./index-BZLZH0t9.js"></script>
-  <link rel="stylesheet" crossorigin href="./index-Bp5xQXv7.css">
+  <script type="module" crossorigin src="./index-IpJE2aQ7.js"></script>
+  <link rel="stylesheet" crossorigin href="./index-C1DXiRnA.css">
 </head>
 <body>
 <canvas id="game"></canvas>
@@ -18,8 +18,8 @@
       <div class="logo-sub">ZOMBIE SURVIVAL &nbsp;//&nbsp; SECTOR 7 &nbsp;//&nbsp; NIGHT OPS</div>
     </div>
     <div class="player-chip">
-      <div class="player-avatar">SR</div>
-      <div class="player-id"><b>SGT. REYES</b><span>LVL 12</span></div>
+      <div class="player-avatar" id="player-avatar">GH</div>
+      <div class="player-id"><b id="player-name">GHOST</b><span>LVL 12</span></div>
       <div class="xp"><i style="width:62%"></i></div>
       <span class="xp-text">1,250 / 2,000 XP</span>
     </div>
@@ -49,7 +49,7 @@
         <div class="panel-body">
           <div class="mode-card selected">
             <div class="mode-title">WAVE SURVIVAL</div>
-            <div class="mode-meta">SECTOR 7 YARD &nbsp;&middot;&nbsp; INFECTED HORDE</div>
+            <div class="mode-meta">DEAD MAIN STREET &nbsp;&middot;&nbsp; INFECTED HORDE</div>
             <div class="mode-meta dim">BEST: <b id="best-score">&mdash;</b></div>
           </div>
           <div class="mode-card locked"><div class="mode-title">NIGHT RAID</div><div class="mode-meta">LOCKED &mdash; SURVIVE WAVE 5</div></div>
@@ -68,7 +68,7 @@
             <div class="daily-row"><span>Score 5 headshots</span><b>0 / 5</b></div>
             <div class="bar"><i style="width:0%"></i></div>
           </div>
-          <div class="controls-hint">WASD MOVE &nbsp;&middot;&nbsp; ARROW KEYS AIM &nbsp;&middot;&nbsp; SPACE FIRE &nbsp;&middot;&nbsp; R RELOAD &nbsp;&middot;&nbsp; SHIFT SPRINT</div>
+          <div class="controls-hint">WASD MOVE &nbsp;&middot;&nbsp; ARROW KEYS AIM &nbsp;&middot;&nbsp; SPACE FIRE &nbsp;&middot;&nbsp; R RELOAD &nbsp;&middot;&nbsp; SHIFT SPRINT &nbsp;&middot;&nbsp; 1-4 WEAPONS &nbsp;&middot;&nbsp; Q SWAP &nbsp;&middot;&nbsp; &larr; &rarr; HERO</div>
         </div>
       </section>
 
@@ -78,7 +78,7 @@
         <div class="panel-body">
           <div class="mission-row open" data-mission="1">
             <div class="mission-num">01</div>
-            <div class="mission-info"><b>FIRST NIGHT</b><span>Survive 5 waves in the Sector 7 yard.</span></div>
+            <div class="mission-info"><b>DEAD MAIN STREET</b><span>Survive 5 waves on Dead Main Street. Loot the shops for guns, bullets and meds.</span></div>
             <div class="mission-tag">OPEN</div>
           </div>
           <div class="mission-row locked"><div class="mission-num">02</div><div class="mission-info"><b>DEAD FREIGHT</b><span>Hold the convoy yard. Coming soon.</span></div><div class="mission-tag">LOCKED</div></div>
@@ -91,17 +91,38 @@
       <section class="panel" id="panel-weapons">
         <div class="panel-head">WEAPONS</div>
         <div class="panel-body">
-          <div class="weapon-row selected">
-            <div class="weapon-name">7.62 BOLT-ACTION <span class="wtag">ASSAULT RIFLE</span></div>
-            <div class="stat"><span>DMG</span><div class="bar"><i style="width:62%"></i></div></div>
-            <div class="stat"><span>RATE</span><div class="bar"><i style="width:78%"></i></div></div>
-            <div class="stat"><span>RANGE</span><div class="bar"><i style="width:70%"></i></div></div>
+          <div class="weapon-row selected" data-weapon="m4">
+            <div class="weapon-name">M4 SPECTRE <span class="wtag">ASSAULT RIFLE</span></div>
+            <div class="stat"><span>DMG</span><div class="bar"><i style="width:33%"></i></div></div>
+            <div class="stat"><span>RATE</span><div class="bar"><i style="width:64%"></i></div></div>
+            <div class="stat"><span>RANGE</span><div class="bar"><i style="width:75%"></i></div></div>
             <div class="stat"><span>MAG</span><b>30</b></div>
             <div class="weapon-tag">EQUIPPED</div>
           </div>
-          <div class="weapon-row locked"><div class="weapon-name">M870 <span class="wtag">SHOTGUN</span></div><div class="weapon-tag">LOCKED — SURVIVE WAVE 5</div></div>
-          <div class="weapon-row locked"><div class="weapon-name">MP5 <span class="wtag">SMG</span></div><div class="weapon-tag">LOCKED — SURVIVE WAVE 8</div></div>
-          <div class="weapon-row locked"><div class="weapon-name">M24 <span class="wtag">SNIPER</span></div><div class="weapon-tag">LOCKED — SURVIVE WAVE 12</div></div>
+          <div class="weapon-row locked" data-weapon="longshot">
+            <div class="weapon-name">LONGSHOT <span class="wtag">SNIPER</span></div>
+            <div class="stat"><span>DMG</span><div class="bar"><i style="width:100%"></i></div></div>
+            <div class="stat"><span>RATE</span><div class="bar"><i style="width:7%"></i></div></div>
+            <div class="stat"><span>RANGE</span><div class="bar"><i style="width:100%"></i></div></div>
+            <div class="stat"><span>MAG</span><b>5</b></div>
+            <div class="weapon-tag">GUN STORE — DEAD MAIN ST</div>
+          </div>
+          <div class="weapon-row locked" data-weapon="breacher">
+            <div class="weapon-name">BREACHER <span class="wtag">SHOTGUN · 8 PELLETS</span></div>
+            <div class="stat"><span>DMG</span><div class="bar"><i style="width:13%"></i></div></div>
+            <div class="stat"><span>RATE</span><div class="bar"><i style="width:9%"></i></div></div>
+            <div class="stat"><span>RANGE</span><div class="bar"><i style="width:21%"></i></div></div>
+            <div class="stat"><span>MAG</span><b>6</b></div>
+            <div class="weapon-tag">AMMO DEPOT — DEAD MAIN ST</div>
+          </div>
+          <div class="weapon-row locked" data-weapon="wasp">
+            <div class="weapon-name">WASP SMG <span class="wtag">SMG</span></div>
+            <div class="stat"><span>DMG</span><div class="bar"><i style="width:18%"></i></div></div>
+            <div class="stat"><span>RATE</span><div class="bar"><i style="width:100%"></i></div></div>
+            <div class="stat"><span>RANGE</span><div class="bar"><i style="width:38%"></i></div></div>
+            <div class="stat"><span>MAG</span><b>32</b></div>
+            <div class="weapon-tag">GUN STORE — DEAD MAIN ST</div>
+          </div>
         </div>
       </section>
 
@@ -109,13 +130,36 @@
       <section class="panel" id="panel-characters">
         <div class="panel-head">CHARACTERS</div>
         <div class="panel-body">
-          <div class="char-row selected">
-            <div class="char-avatar">SR</div>
-            <div class="char-info"><b>SGT. REYES</b><span>Assault // Veteran of Sector 7. Balanced speed and health.</span></div>
+          <div class="char-row selected" data-hero="ghost">
+            <div class="char-avatar">GH</div>
+            <div class="char-info"><b>GHOST</b><span>Night Ops // Zombies hunt 15% slower. HP 100, fast.</span></div>
             <div class="weapon-tag">SELECTED</div>
           </div>
-          <div class="char-row locked"><div class="char-avatar">VK</div><div class="char-info"><b>LT. VOSS</b><span>Heavy // Slower, +25 health. Coming soon.</span></div><div class="weapon-tag">LOCKED</div></div>
-          <div class="char-row locked"><div class="char-avatar">KA</div><div class="char-info"><b>CPL. KANE</b><span>Scout // Faster sprint, less health. Coming soon.</span></div><div class="weapon-tag">LOCKED</div></div>
+          <div class="char-row" data-hero="viper">
+            <div class="char-avatar">VP</div>
+            <div class="char-info"><b>VIPER</b><span>Desert Sniper // Headshots deal 1.5x damage. HP 90, +25% damage.</span></div>
+            <div class="weapon-tag">DEAD EYE</div>
+          </div>
+          <div class="char-row" data-hero="juggernaut">
+            <div class="char-avatar">JG</div>
+            <div class="char-info"><b>JUGGERNAUT</b><span>Heavy // Takes 25% less damage. HP 160, slow.</span></div>
+            <div class="weapon-tag">IRON SKIN</div>
+          </div>
+          <div class="char-row" data-hero="nova">
+            <div class="char-avatar">NV</div>
+            <div class="char-info"><b>NOVA</b><span>Recon // Reloads 40% faster. HP 90, fastest on foot.</span></div>
+            <div class="weapon-tag">QUICK HANDS</div>
+          </div>
+          <div class="char-row" data-hero="doc">
+            <div class="char-avatar">DC</div>
+            <div class="char-info"><b>DOC</b><span>Medic // Regenerates 2 HP/s. Medkits heal +50%. HP 100.</span></div>
+            <div class="weapon-tag">FIELD MEDIC</div>
+          </div>
+          <div class="char-row" data-hero="blaze">
+            <div class="char-avatar">BZ</div>
+            <div class="char-info"><b>BLAZE</b><span>Demolitions // Every 5th hit explodes for 40 splash. HP 110.</span></div>
+            <div class="weapon-tag">EXPLOSIVE ROUNDS</div>
+          </div>
         </div>
       </section>
 
@@ -141,20 +185,21 @@
 
 <aside class="showcase">
       <div class="showcase-tag">OPERATOR</div>
-      <div class="showcase-name">SGT. REYES</div>
-      <div class="showcase-role">ASSAULT // SECTOR 7</div>
+      <div class="showcase-name" id="showcase-name">GHOST</div>
+      <div class="showcase-role" id="showcase-role">NIGHT OPS // SILENT STEPS</div>
+      <div class="showcase-ability" id="showcase-ability">Zombies hunt 15% slower when they come for you.</div>
       <div class="showcase-stats">
-        <div><span>HEALTH</span><b>100</b></div>
-        <div><span>SPEED</span><b>5.0 m/s</b></div>
+        <div><span>HEALTH</span><b id="showcase-hp">100</b></div>
+        <div><span>SPEED</span><b id="showcase-speed">5.8 m/s</b></div>
         <div><span>ARMOR</span><b>LEVEL II</b></div>
-        <div><span>PRIMARY</span><b>7.62 BOLT-ACTION</b></div>
+        <div><span>PRIMARY</span><b id="showcase-primary">M4 SPECTRE</b></div>
       </div>
     
       <div class="weapon-card">
         <div class="side-head">PRIMARY WEAPON</div>
-        <div class="weapon-name">7.62 BOLT-ACTION <span class="wtag">BOLT-ACTION RIFLE</span></div>
-        <div class="stat"><span>DMG</span><div class="bar"><i style="width:62%"></i></div></div>
-        <div class="stat"><span>RATE</span><div class="bar"><i style="width:78%"></i></div></div>
+        <div class="weapon-name">M4 SPECTRE <span class="wtag">ASSAULT RIFLE</span></div>
+        <div class="stat"><span>DMG</span><div class="bar"><i style="width:33%"></i></div></div>
+        <div class="stat"><span>RATE</span><div class="bar"><i style="width:64%"></i></div></div>
       </div>
     </aside>
   </div>
@@ -162,7 +207,7 @@
   <div class="lobby-bottom">
     <div class="squad">
       <span class="squad-label">SQUAD &mdash; SOLO</span>
-      <div class="squad-slot filled">SR</div>
+      <div class="squad-slot filled" id="squad-avatar">GH</div>
       <div class="squad-slot">+</div>
       <div class="squad-slot">+</div>
       <button class="btn-invite" type="button">+ INVITE</button>
@@ -184,7 +229,7 @@
   </div>
   <div class="hud-bottom">
     <div class="hud-health"><span>HEALTH</span><div class="bar big"><i id="health-fill" style="width:100%"></i></div><b id="health-num">100</b></div>
-    <div class="hud-ammo"><b id="ammo-num">30</b><span>/ ∞</span><div id="reload-hint">RELOADING…</div></div>
+    <div class="hud-ammo"><div id="hud-weapon">M4 SPECTRE</div><b id="ammo-num">30</b><span>/ <b id="ammo-reserve">90</b></span><div id="reload-hint">RELOADING…</div></div>
   </div>
   <div id="pause-tip">ESC — RELEASE MOUSE &nbsp;·&nbsp; CLICK TO RE-ENGAGE</div>
 </div>
