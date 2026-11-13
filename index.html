@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DEADZONE — Zombie Survival</title>
-  <script type="module" crossorigin src="./index-JHcZJHum.js"></script>
-  <link rel="stylesheet" crossorigin href="./index-DJk2txeG.css">
+  <script type="module" crossorigin src="./index-D5tkNyre.js"></script>
+  <link rel="stylesheet" crossorigin href="./index-DKcZ75FY.css">
 </head>
 <body>
 <canvas id="game"></canvas>
@@ -68,7 +68,7 @@
             <div class="daily-row"><span>Score 5 headshots</span><b>0 / 5</b></div>
             <div class="bar"><i style="width:0%"></i></div>
           </div>
-          <div class="controls-hint">WASD MOVE &nbsp;·&nbsp; ARROWS AIM &nbsp;·&nbsp; SPACE FIRE &nbsp;·&nbsp; R RELOAD &nbsp;·&nbsp; SHIFT SPRINT<br>1-4 WEAPONS &nbsp;·&nbsp; Q SWAP &nbsp;·&nbsp; E DOOR &nbsp;·&nbsp; ARROW KEYS HERO</div>
+          <div class="controls-hint">WASD MOVE &nbsp;·&nbsp; ARROWS AIM &nbsp;·&nbsp; SPACE FIRE &nbsp;·&nbsp; R RELOAD &nbsp;·&nbsp; SHIFT SPRINT<br>1-4 WEAPONS &nbsp;·&nbsp; Q SWAP &nbsp;·&nbsp; E DOOR &nbsp;·&nbsp; Z SNIPER ZOOM &nbsp;·&nbsp; ARROW KEYS HERO</div>
         </div>
       </section>
 
@@ -78,7 +78,7 @@
         <div class="panel-body">
           <div class="mission-row open" data-mission="1">
             <div class="mission-num">01</div>
-            <div class="mission-info"><b>DEAD MAIN STREET</b><span>Survive 5 waves on Dead Main Street. Loot the shops for guns, bullets and meds.</span></div>
+            <div class="mission-info"><b>DEAD MAIN STREET</b><span>Day 1. The outbreak hit Sector 7 at midnight. Hold Dead Main Street for 5 waves. Loot the shops for guns, bullets and meds.</span></div>
             <div class="mission-tag">OPEN</div>
           </div>
           <div class="mission-row locked"><div class="mission-num">02</div><div class="mission-info"><b>DEAD FREIGHT</b><span>Hold the convoy yard. Coming soon.</span></div><div class="mission-tag">LOCKED</div></div>
@@ -189,6 +189,8 @@
             <select id="set-quality"><option value="high">HIGH</option><option value="med" selected>MEDIUM</option><option value="low">LOW</option></select>
           </label>
           <label class="setting check"><span>CROSSHAIR</span><input id="set-cross" type="checkbox" checked></label>
+          <label class="setting check"><span>AUTO-FIRE</span><input id="set-autofire" type="checkbox"></label>
+          <div class="settings-note">Auto-fire: the gun fires itself at the nearest infected in your sights. SPACE still fires by hand.</div>
           <div class="settings-note">Settings save on this machine.</div>
         </div>
       </section>
@@ -251,11 +253,19 @@
   <div id="pause-tip">ESC — RELEASE MOUSE &nbsp;·&nbsp; CLICK TO RE-ENGAGE</div>
 </div>
 
+<!-- ============ STORY CARD (Day 1 briefing, shows on DEPLOY) ============ -->
+<div id="story-card" class="hidden">
+  <div class="story-title" id="story-title">DEAD MAIN STREET — DAY 1</div>
+  <div class="story-lines" id="story-lines"></div>
+  <div class="story-cta">SPACE OR CLICK TO CONTINUE</div>
+</div>
+
 <!-- ============ GAME OVER ============ -->
 <div id="gameover" class="screen hidden">
   <div class="go-box">
     <div class="go-title">K.I.A.</div>
     <div class="go-sub">THE HORDE GOT YOU ON WAVE <b id="go-wave">1</b></div>
+    <div class="go-story" id="go-story"></div>
     <div class="go-stats">
       <div><span>SCORE</span><b id="go-score">0</b></div>
       <div><span>KILLS</span><b id="go-kills">0</b></div>
